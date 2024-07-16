@@ -1,11 +1,12 @@
-import { useState } from "react"
+import { useState} from "react"
+import React from "react"
 import "./LandingPageStyle.css"
 
 export function LandingPage(){
-    const [UserSearch,SetUserSearch]=useState("")
+
     return <>
     <RenderTopSection/>
-    <RenderMainSection UserSearch={UserSearch} SetUserSearch={SetUserSearch}/>   
+    <RenderMainSection/>   
     </>
 }
 
@@ -17,7 +18,8 @@ function RenderTopSection(){
         </div>
 )}
 
-function RenderMainSection({UserSearch,SetUserSearch}){
+function RenderMainSection(){
+    const [UserSearch,SetUserSearch]=useState("@")
     return(
         <div className="SearchSection">
             <h2>Search The GitHub Profile</h2>
@@ -26,10 +28,10 @@ function RenderMainSection({UserSearch,SetUserSearch}){
         </div>
 )}
 
-function ButtonRender(){
+const ButtonRender=React.memo(function ButtonRender(){
     return <>
         <button className="LoadButton">Load Profile</button>
     </>
-}
+})
 
 
