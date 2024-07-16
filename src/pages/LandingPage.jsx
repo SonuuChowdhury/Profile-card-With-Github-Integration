@@ -1,4 +1,5 @@
-import { useState} from "react"
+import { useCallback, useEffect, useState} from "react"
+import { AuthPop } from "../Components/AuthPop"
 import React from "react"
 import "./LandingPageStyle.css"
 
@@ -24,14 +25,20 @@ function RenderMainSection(){
         <div className="SearchSection">
             <h2>Search The GitHub Profile</h2>
             <input type="text" placeholder="Search Here" className="SearchBox" onChange={(event)=>SetUserSearch(event.target.value)}/>
-            {UserSearch.length?<ButtonRender/>:null}
+            {UserSearch.length?<ButtonRender UserSearch={UserSearch}/>:null}
         </div>
 )}
 
-const ButtonRender=React.memo(function ButtonRender(){
+const ButtonRender=React.memo(function ButtonRender({UserSearch}){
     return <>
-        <button className="LoadButton">Load Profile</button>
+        <button className="LoadButton" onClick={() => AuthenticateUserName(UserSearch)}>Load Profile</button>
     </>
 })
+
+function AuthenticateUserName({UserSearch}) {
+    
+
+
+}
 
 
